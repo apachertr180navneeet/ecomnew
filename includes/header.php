@@ -37,7 +37,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <span>Indian Rupee <i class="bi bi-chevron-down ms-1"></i></span>
             </div>
             <div class="d-flex gap-4 header-top-right">
-                <span>Become a Seller ! <i class="bi bi-chevron-down ms-1"></i></span>
+                <a href="seller/login.php" style="color:inherit;text-decoration:none;">Become a Seller ! <i class="bi bi-chevron-down ms-1"></i></a>
                 <span>Helpline: +911169261706</span>
             </div>
         </div>
@@ -66,7 +66,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-person"></i>
                 </div>
                 <div class="profile-text" id="headerProfileText">
-                    <a href="login.php?action=login">Login</a> | <a href="login.php?action=register">Registration</a>
+                    <a href="login-page.php">Login</a> | <a href="register-page.php">Registration</a>
                 </div>
             </div>
 
@@ -137,9 +137,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="mobile-user-info">
                     <p class="mobile-user-greeting" id="mobileGreetingText">Welcome!</p>
                     <div class="mobile-user-actions" id="mobileGreetingActions">
-                        <a href="login.php?action=login" class="mobile-user-btn">Login</a>
+                        <a href="login-page.php" class="mobile-user-btn">Login</a>
                         <span class="mobile-user-divider">&bull;</span>
-                        <a href="login.php?action=register" class="mobile-user-btn">Register</a>
+                        <a href="register-page.php" class="mobile-user-btn">Register</a>
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <a href="#"><i class="bi bi-headset"></i><span>Helpline: +911169261706</span></a>
                     </li>
                     <li class="mobile-nav-item">
-                        <a href="#"><i class="bi bi-shop-window"></i><span>Become a Seller</span></a>
+                        <a href="seller/login.php"><i class="bi bi-shop-window"></i><span>Become a Seller</span></a>
                     </li>
                 </ul>
             </nav>
@@ -286,7 +286,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     if (isLoggedIn) {
                         profileTextEl.innerHTML = `<a href="account.php" class="fw-bold text-purple">${userName}</a> | <a href="javascript:void(0)" onclick="headerLogout()">Logout</a>`;
                     } else {
-                        profileTextEl.innerHTML = `<a href="login.php?action=login">Login</a> | <a href="login.php?action=register">Registration</a>`;
+                        profileTextEl.innerHTML = `<a href="login-page.php">Login</a> | <a href="register-page.php">Registration</a>`;
                     }
                 }
 
@@ -306,10 +306,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 } else {
                     if (mobileGreetingText) mobileGreetingText.textContent = `Welcome!`;
                     if (mobileGreetingActions) {
-                        mobileGreetingActions.innerHTML = `<a href="login.php?action=login" class="mobile-user-btn">Login</a> <span class="mobile-user-divider">&bull;</span> <a href="login.php?action=register" class="mobile-user-btn">Register</a>`;
+                        mobileGreetingActions.innerHTML = `<a href="login-page.php" class="mobile-user-btn">Login</a> <span class="mobile-user-divider">&bull;</span> <a href="register-page.php" class="mobile-user-btn">Register</a>`;
                     }
                     if (mobileAccountLink) {
-                        mobileAccountLink.href = 'login.php?action=login';
+                        mobileAccountLink.href = 'login-page.php';
                     }
                 }
             } catch(e) {}
