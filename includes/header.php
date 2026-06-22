@@ -1,5 +1,29 @@
 <?php
 $currentPage = basename($_SERVER['PHP_SELF']);
+
+// Calculate root path relative to the project root directory
+$projectRoot = str_replace('\\', '/', dirname(__DIR__));
+$currentScriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_FILENAME']));
+
+// Attempt to resolve realpath for symbolic links and normalization, but fall back if it fails
+$realProjectRoot = realpath($projectRoot);
+$realScriptDir = realpath($currentScriptDir);
+if ($realProjectRoot !== false && $realScriptDir !== false) {
+    $projectRoot = str_replace('\\', '/', $realProjectRoot);
+    $currentScriptDir = str_replace('\\', '/', $realScriptDir);
+}
+
+$relativeDiff = '';
+if (stripos($currentScriptDir, $projectRoot) === 0) {
+    $relativeDiff = substr($currentScriptDir, strlen($projectRoot));
+}
+
+$relativeDiff = trim($relativeDiff, '/');
+$depth = 0;
+if ($relativeDiff !== '') {
+    $depth = count(explode('/', $relativeDiff));
+}
+$rootPath = $depth > 0 ? str_repeat('../', $depth) : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +40,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $rootPath; ?>assets/css/style.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🛍️%3C/text%3E%3C/svg%3E">
     <style>
@@ -37,7 +61,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <span>Indian Rupee <i class="bi bi-chevron-down ms-1"></i></span>
             </div>
             <div class="d-flex gap-4 header-top-right">
-                <a href="seller/login.php" style="color:inherit;text-decoration:none;">Become a Seller ! <i class="bi bi-chevron-down ms-1"></i></a>
+                <a href="<?php echo $rootPath; ?>seller/login.php" style="color:inherit;text-decoration:none;">Become a Seller ! <i class="bi bi-chevron-down ms-1"></i></a>
                 <span>Helpline: +911169261706</span>
             </div>
         </div>
@@ -49,7 +73,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <header class="main-header py-2 py-lg-3 border-bottom">
         <div class="container d-flex align-items-center justify-content-between gap-3">
             <!-- Logo -->
-            <a href="index.php" class="brand-logo-custom d-flex flex-column align-items-center flex-shrink-0">
+            <a href="<?php echo $rootPath; ?>index.php" class="brand-logo-custom d-flex flex-column align-items-center flex-shrink-0">
                 <div class="logo-ax">AX</div>
                 <div class="logo-text">AXVERO</div>
             </a>
@@ -66,7 +90,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-person"></i>
                 </div>
                 <div class="profile-text" id="headerProfileText">
-                    <a href="login-page.php">Login</a> | <a href="register-page.php">Registration</a>
+                    <a href="<?php echo $rootPath; ?>login-page.php">Login</a> | <a href="<?php echo $rootPath; ?>register-page.php">Registration</a>
                 </div>
             </div>
 
@@ -81,12 +105,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-heart"></i>
                 </a>
                 <!-- Cart -->
-                <a href="cart.php" class="mobile-icon-btn position-relative" aria-label="Cart">
+                <a href="<?php echo $rootPath; ?>cart.php" class="mobile-icon-btn position-relative" aria-label="Cart">
                     <i class="bi bi-bag"></i>
                     <span class="mobile-cart-badge" id="mobileCartCount">3</span>
                 </a>
                 <!-- Person / Account -->
-                <a href="account.php" class="mobile-icon-btn d-none d-sm-flex" aria-label="Account" id="mobileAccountLink">
+                <a href="<?php echo $rootPath; ?>account.php" class="mobile-icon-btn d-none d-sm-flex" aria-label="Account" id="mobileAccountLink">
                     <i class="bi bi-person"></i>
                 </a>
                 <!-- Hamburger Button -->
@@ -118,7 +142,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <div class="offcanvas offcanvas-start mobile-offcanvas" tabindex="-1" id="mobileMenuOffcanvas" aria-labelledby="mobileMenuOffcanvasLabel">
         <!-- Offcanvas Header -->
         <div class="offcanvas-header mobile-offcanvas-header">
-            <a href="index.php" class="brand-logo-custom d-flex flex-column align-items-center">
+            <a href="<?php echo $rootPath; ?>index.php" class="brand-logo-custom d-flex flex-column align-items-center">
                 <div class="logo-ax" style="font-size: 1.4rem;">AX</div>
                 <div class="logo-text">AXVERO</div>
             </a>
@@ -137,9 +161,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="mobile-user-info">
                     <p class="mobile-user-greeting" id="mobileGreetingText">Welcome!</p>
                     <div class="mobile-user-actions" id="mobileGreetingActions">
-                        <a href="login-page.php" class="mobile-user-btn">Login</a>
+                        <a href="<?php echo $rootPath; ?>login-page.php" class="mobile-user-btn">Login</a>
                         <span class="mobile-user-divider">&bull;</span>
-                        <a href="register-page.php" class="mobile-user-btn">Register</a>
+                        <a href="<?php echo $rootPath; ?>register-page.php" class="mobile-user-btn">Register</a>
                     </div>
                 </div>
             </div>
@@ -148,16 +172,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <nav class="mobile-nav-section">
                 <ul class="mobile-nav-list">
                     <li class="mobile-nav-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">
-                        <a href="index.php"><i class="bi bi-house-door"></i><span>Home</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                        <a href="<?php echo $rootPath; ?>index.php"><i class="bi bi-house-door"></i><span>Home</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
                     <li class="mobile-nav-item <?php echo ($currentPage == 'flash-sale.php') ? 'active' : ''; ?>">
-                        <a href="flash-sale.php"><i class="bi bi-lightning"></i><span>Flash Sale</span><span class="mobile-nav-hot-badge">HOT</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                        <a href="<?php echo $rootPath; ?>flash-sale.php"><i class="bi bi-lightning"></i><span>Flash Sale</span><span class="mobile-nav-hot-badge">HOT</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
                     <li class="mobile-nav-item <?php echo ($currentPage == 'brands.php') ? 'active' : ''; ?>">
-                        <a href="brands.php"><i class="bi bi-shop"></i><span>All Brands</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                        <a href="<?php echo $rootPath; ?>brands.php"><i class="bi bi-shop"></i><span>All Brands</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
                     <li class="mobile-nav-item <?php echo ($currentPage == 'categories.php') ? 'active' : ''; ?>">
-                        <a href="categories.php"><i class="bi bi-grid"></i><span>All Categories</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                        <a href="<?php echo $rootPath; ?>categories.php"><i class="bi bi-grid"></i><span>All Categories</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
                     <li class="mobile-nav-item">
                         <a href="#"><i class="bi bi-people"></i><span>Team Login</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
@@ -172,13 +196,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <div class="mobile-nav-section">
                 <h6 class="mobile-section-label">Shop by Category</h6>
                 <div class="mobile-category-chips">
-                    <a href="category.php?category=Women" class="mobile-chip">Women</a>
-                    <a href="category.php?category=Mens" class="mobile-chip">Men</a>
-                    <a href="category.php?category=Kids" class="mobile-chip">Kids</a>
-                    <a href="category.php?category=Footwear" class="mobile-chip">Footwear</a>
-                    <a href="category.php?category=HomeDecor" class="mobile-chip">Home Decor</a>
-                    <a href="category.php?category=Bags" class="mobile-chip">Bags</a>
-                    <a href="category.php?category=Accessories" class="mobile-chip">Accessories</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Women" class="mobile-chip">Women</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Mens" class="mobile-chip">Men</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Kids" class="mobile-chip">Kids</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Footwear" class="mobile-chip">Footwear</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=HomeDecor" class="mobile-chip">Home Decor</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Bags" class="mobile-chip">Bags</a>
+                    <a href="<?php echo $rootPath; ?>category.php?category=Accessories" class="mobile-chip">Accessories</a>
                 </div>
             </div>
 
@@ -193,7 +217,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <a href="#"><i class="bi bi-headset"></i><span>Helpline: +911169261706</span></a>
                     </li>
                     <li class="mobile-nav-item">
-                        <a href="seller/login.php"><i class="bi bi-shop-window"></i><span>Become a Seller</span></a>
+                        <a href="<?php echo $rootPath; ?>seller/login.php"><i class="bi bi-shop-window"></i><span>Become a Seller</span></a>
                     </li>
                 </ul>
             </nav>
@@ -221,27 +245,27 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-chevron-down text-purple ms-1"></i>
                 </div>
                 <ul class="dropdown-menu categories-dropdown-menu shadow-sm border-0 py-2 mt-2" aria-labelledby="categoriesDropdown">
-                    <li><a class="dropdown-item" href="category.php?category=Westernwear">Westernwear</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Indianwear">Indianwear</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Mens">Mens</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Kids">Kids</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Women">Women</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Footwear">Footwear</a></li>
-                    <li><a class="dropdown-item" href="category.php?category=Bags">Bags</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Westernwear">Westernwear</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Indianwear">Indianwear</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Mens">Mens</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Kids">Kids</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Women">Women</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Footwear">Footwear</a></li>
+                    <li><a class="dropdown-item" href="<?php echo $rootPath; ?>category.php?category=Bags">Bags</a></li>
                 </ul>
             </div>
 
             <!-- Middle Navigation Links -->
             <ul class="nav-links-custom d-flex gap-4 mb-0 align-items-center d-none d-lg-flex">
-                <li><a href="index.php" class="nav-link-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a></li>
-                <li><a href="flash-sale.php" class="nav-link-item <?php echo ($currentPage == 'flash-sale.php') ? 'active' : ''; ?>">Flash Sale</a></li>
-                <li><a href="brands.php" class="nav-link-item <?php echo ($currentPage == 'brands.php') ? 'active' : ''; ?>">All Brands</a></li>
-                <li><a href="categories.php" class="nav-link-item <?php echo ($currentPage == 'categories.php') ? 'active' : ''; ?>">All categories</a></li>
+                <li><a href="<?php echo $rootPath; ?>index.php" class="nav-link-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a></li>
+                <li><a href="<?php echo $rootPath; ?>flash-sale.php" class="nav-link-item <?php echo ($currentPage == 'flash-sale.php') ? 'active' : ''; ?>">Flash Sale</a></li>
+                <li><a href="<?php echo $rootPath; ?>brands.php" class="nav-link-item <?php echo ($currentPage == 'brands.php') ? 'active' : ''; ?>">All Brands</a></li>
+                <li><a href="<?php echo $rootPath; ?>categories.php" class="nav-link-item <?php echo ($currentPage == 'categories.php') ? 'active' : ''; ?>">All categories</a></li>
                 <li><a href="#" class="nav-link-item">Team Login/ Company Person</a></li>
             </ul>
 
             <!-- Right Shopping Cart -->
-            <a href="cart.php" class="nav-cart-custom d-flex align-items-center gap-2 text-decoration-none" id="desktopCartBtn">
+            <a href="<?php echo $rootPath; ?>cart.php" class="nav-cart-custom d-flex align-items-center gap-2 text-decoration-none" id="desktopCartBtn">
                 <i class="bi bi-cart3 text-purple fs-4"></i>
                 <span class="text-purple" id="desktopCartCount">3</span>
             </a>
@@ -250,6 +274,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <script>
     // ===== Axvero Header State Sync =====
+    var ROOT_PATH = '<?php echo $rootPath; ?>';
     document.addEventListener("DOMContentLoaded", function() {
         // 1. Sync Cart Count
         function syncHeaderCartCount() {
@@ -284,9 +309,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 const profileTextEl = document.getElementById('headerProfileText');
                 if (profileTextEl) {
                     if (isLoggedIn) {
-                        profileTextEl.innerHTML = `<a href="account.php" class="fw-bold text-purple">${userName}</a> | <a href="javascript:void(0)" onclick="headerLogout()">Logout</a>`;
+                        profileTextEl.innerHTML = '<a href="' + ROOT_PATH + 'account.php" class="fw-bold text-purple">' + userName + '</a> | <a href="javascript:void(0)" onclick="headerLogout()">Logout</a>';
                     } else {
-                        profileTextEl.innerHTML = `<a href="login-page.php">Login</a> | <a href="register-page.php">Registration</a>`;
+                        profileTextEl.innerHTML = '<a href="' + ROOT_PATH + 'login-page.php">Login</a> | <a href="' + ROOT_PATH + 'register-page.php">Registration</a>';
                     }
                 }
 
@@ -296,20 +321,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 const mobileAccountLink = document.getElementById('mobileAccountLink');
 
                 if (isLoggedIn) {
-                    if (mobileGreetingText) mobileGreetingText.textContent = `Welcome, ${userName.split(' ')[0]}!`;
+                    if (mobileGreetingText) mobileGreetingText.textContent = 'Welcome, ' + userName.split(' ')[0] + '!';
                     if (mobileGreetingActions) {
-                        mobileGreetingActions.innerHTML = `<a href="account.php" class="mobile-user-btn">My Account</a> <span class="mobile-user-divider">&bull;</span> <a href="javascript:void(0)" onclick="headerLogout()" class="mobile-user-btn">Logout</a>`;
+                        mobileGreetingActions.innerHTML = '<a href="' + ROOT_PATH + 'account.php" class="mobile-user-btn">My Account</a> <span class="mobile-user-divider">&bull;</span> <a href="javascript:void(0)" onclick="headerLogout()" class="mobile-user-btn">Logout</a>';
                     }
                     if (mobileAccountLink) {
-                        mobileAccountLink.href = 'account.php';
+                        mobileAccountLink.href = ROOT_PATH + 'account.php';
                     }
                 } else {
-                    if (mobileGreetingText) mobileGreetingText.textContent = `Welcome!`;
+                    if (mobileGreetingText) mobileGreetingText.textContent = 'Welcome!';
                     if (mobileGreetingActions) {
-                        mobileGreetingActions.innerHTML = `<a href="login-page.php" class="mobile-user-btn">Login</a> <span class="mobile-user-divider">&bull;</span> <a href="register-page.php" class="mobile-user-btn">Register</a>`;
+                        mobileGreetingActions.innerHTML = '<a href="' + ROOT_PATH + 'login-page.php" class="mobile-user-btn">Login</a> <span class="mobile-user-divider">&bull;</span> <a href="' + ROOT_PATH + 'register-page.php" class="mobile-user-btn">Register</a>';
                     }
                     if (mobileAccountLink) {
-                        mobileAccountLink.href = 'login-page.php';
+                        mobileAccountLink.href = ROOT_PATH + 'login-page.php';
                     }
                 }
             } catch(e) {}
@@ -323,11 +348,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 if (typeof showToast === 'function') {
                     showToast('Logged out successfully');
                 }
-                setTimeout(() => {
-                    window.location.href = 'index.php';
+                setTimeout(function() {
+                    window.location.href = ROOT_PATH + 'index.php';
                 }, 800);
             } catch(e) {
-                window.location.href = 'index.php';
+                window.location.href = ROOT_PATH + 'index.php';
             }
         };
 

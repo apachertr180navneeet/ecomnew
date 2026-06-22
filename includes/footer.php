@@ -6,7 +6,7 @@
             <div class="row g-5">
                 <!-- Brand -->
                 <div class="col-lg-3 col-md-6">
-                    <a href="index.php" class="footer-brand">Axvero<span>.</span></a>
+                    <a href="<?php echo $rootPath; ?>index.php" class="footer-brand">Axvero<span>.</span></a>
                     <p class="footer-desc">Elevating your everyday style with premium fashion and home essentials. Discover the art of modern living.</p>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -21,12 +21,12 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="about-us.php">About Us</a></li>
-                        <li><a href="careers.php">Careers</a></li>
-                        <li><a href="store-locator.php">Store Locator</a></li>
-                        <li><a href="sustainability.php">Sustainability</a></li>
-                        <li><a href="account.php">My Account</a></li>
-                        <li><a href="account.php?tab=orders">Track Order</a></li>
+                        <li><a href="<?php echo $rootPath; ?>about-us.php">About Us</a></li>
+                        <li><a href="<?php echo $rootPath; ?>careers.php">Careers</a></li>
+                        <li><a href="<?php echo $rootPath; ?>store-locator.php">Store Locator</a></li>
+                        <li><a href="<?php echo $rootPath; ?>sustainability.php">Sustainability</a></li>
+                        <li><a href="<?php echo $rootPath; ?>account.php">My Account</a></li>
+                        <li><a href="<?php echo $rootPath; ?>account.php?tab=orders">Track Order</a></li>
                     </ul>
                 </div>
 
@@ -34,11 +34,11 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <h5 class="footer-heading">Categories</h5>
                     <ul class="footer-links">
-                        <li><a href="category.php?category=Women">Women</a></li>
-                        <li><a href="category.php?category=Mens">Men</a></li>
-                        <li><a href="category.php?category=Kids">Kids</a></li>
-                        <li><a href="category.php?category=Accessories">Accessories</a></li>
-                        <li><a href="category.php?category=HomeDecor">Home & Decor</a></li>
+                        <li><a href="<?php echo $rootPath; ?>category.php?category=Women">Women</a></li>
+                        <li><a href="<?php echo $rootPath; ?>category.php?category=Mens">Men</a></li>
+                        <li><a href="<?php echo $rootPath; ?>category.php?category=Kids">Kids</a></li>
+                        <li><a href="<?php echo $rootPath; ?>category.php?category=Accessories">Accessories</a></li>
+                        <li><a href="<?php echo $rootPath; ?>category.php?category=HomeDecor">Home & Decor</a></li>
                     </ul>
                 </div>
 
@@ -95,6 +95,6 @@
     <!-- Bootstrap 5.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="<?php echo $rootPath; ?>assets/js/main.js"></script>
 </body>
 </html>
