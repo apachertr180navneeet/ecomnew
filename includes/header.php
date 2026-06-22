@@ -66,7 +66,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-person"></i>
                 </div>
                 <div class="profile-text">
-                    <a href="#">Login</a> | <a href="#">Registration</a>
+                    <a href="login.php?action=login">Login</a> | <a href="login.php?action=register">Registration</a>
                 </div>
             </div>
 
@@ -137,9 +137,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="mobile-user-info">
                     <p class="mobile-user-greeting">Welcome!</p>
                     <div class="mobile-user-actions">
-                        <a href="#" class="mobile-user-btn">Login</a>
+                        <a href="login.php?action=login" class="mobile-user-btn">Login</a>
                         <span class="mobile-user-divider">&bull;</span>
-                        <a href="#" class="mobile-user-btn">Register</a>
+                        <a href="login.php?action=register" class="mobile-user-btn">Register</a>
                     </div>
                 </div>
             </div>

@@ -21,11 +21,11 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <h5 class="footer-heading">Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Store Locator</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Press</a></li>
+                        <li><a href="about-us.php">About Us</a></li>
+                        <li><a href="careers.php">Careers</a></li>
+                        <li><a href="store-locator.php">Store Locator</a></li>
+                        <li><a href="sustainability.php">Sustainability</a></li>
+                        <li><a href="press.php">Press</a></li>
                     </ul>
                 </div>
 
