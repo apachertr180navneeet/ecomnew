@@ -1005,6 +1005,10 @@ include 'includes/header.php';
 
             setTimeout(() => {
                 if (nextState === 'redirect') {
+                    try {
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('userName', 'Navneet Kumar');
+                    } catch(e) {}
                     window.location.href = "index.php";
                 } else if (nextState) {
                     switchState(nextState);

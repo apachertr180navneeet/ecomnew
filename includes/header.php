@@ -65,7 +65,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="profile-icon-wrapper">
                     <i class="bi bi-person"></i>
                 </div>
-                <div class="profile-text">
+                <div class="profile-text" id="headerProfileText">
                     <a href="login.php?action=login">Login</a> | <a href="login.php?action=register">Registration</a>
                 </div>
             </div>
@@ -81,12 +81,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-heart"></i>
                 </a>
                 <!-- Cart -->
-                <a href="#" class="mobile-icon-btn position-relative" aria-label="Cart">
+                <a href="cart.php" class="mobile-icon-btn position-relative" aria-label="Cart">
                     <i class="bi bi-bag"></i>
-                    <span class="mobile-cart-badge">3</span>
+                    <span class="mobile-cart-badge" id="mobileCartCount">3</span>
                 </a>
                 <!-- Person / Account -->
-                <a href="#" class="mobile-icon-btn d-none d-sm-flex" aria-label="Account">
+                <a href="account.php" class="mobile-icon-btn d-none d-sm-flex" aria-label="Account" id="mobileAccountLink">
                     <i class="bi bi-person"></i>
                 </a>
                 <!-- Hamburger Button -->
@@ -135,8 +135,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <i class="bi bi-person-fill"></i>
                 </div>
                 <div class="mobile-user-info">
-                    <p class="mobile-user-greeting">Welcome!</p>
-                    <div class="mobile-user-actions">
+                    <p class="mobile-user-greeting" id="mobileGreetingText">Welcome!</p>
+                    <div class="mobile-user-actions" id="mobileGreetingActions">
                         <a href="login.php?action=login" class="mobile-user-btn">Login</a>
                         <span class="mobile-user-divider">&bull;</span>
                         <a href="login.php?action=register" class="mobile-user-btn">Register</a>
@@ -241,9 +241,103 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </ul>
 
             <!-- Right Shopping Cart -->
-            <div class="nav-cart-custom d-flex align-items-center gap-2">
+            <a href="cart.php" class="nav-cart-custom d-flex align-items-center gap-2 text-decoration-none" id="desktopCartBtn">
                 <i class="bi bi-cart3 text-purple fs-4"></i>
-                <span class="text-purple">3</span>
-            </div>
+                <span class="text-purple" id="desktopCartCount">3</span>
+            </a>
         </div>
     </div>
+
+<script>
+    // ===== Axvero Header State Sync =====
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Sync Cart Count
+        function syncHeaderCartCount() {
+            let totalQty = 0;
+            try {
+                const localCart = localStorage.getItem('axv_cart');
+                if (localCart) {
+                    const cart = JSON.parse(localCart);
+                    cart.forEach(item => {
+                        totalQty += (parseInt(item.qty) || 1);
+                    });
+                } else {
+                    totalQty = 3; // Default mockup count
+                }
+            } catch(e) {
+                totalQty = 3;
+            }
+
+            const desktopCountEl = document.getElementById('desktopCartCount');
+            const mobileCountEl = document.getElementById('mobileCartCount');
+            if (desktopCountEl) desktopCountEl.textContent = totalQty;
+            if (mobileCountEl) mobileCountEl.textContent = totalQty;
+        }
+
+        // 2. Sync User Authentication State
+        function syncHeaderUserState() {
+            try {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                const userName = localStorage.getItem('userName') || 'Navneet Kumar';
+
+                // Desktop header update
+                const profileTextEl = document.getElementById('headerProfileText');
+                if (profileTextEl) {
+                    if (isLoggedIn) {
+                        profileTextEl.innerHTML = `<a href="account.php" class="fw-bold text-purple">${userName}</a> | <a href="javascript:void(0)" onclick="headerLogout()">Logout</a>`;
+                    } else {
+                        profileTextEl.innerHTML = `<a href="login.php?action=login">Login</a> | <a href="login.php?action=register">Registration</a>`;
+                    }
+                }
+
+                // Mobile greeting and links update
+                const mobileGreetingText = document.getElementById('mobileGreetingText');
+                const mobileGreetingActions = document.getElementById('mobileGreetingActions');
+                const mobileAccountLink = document.getElementById('mobileAccountLink');
+
+                if (isLoggedIn) {
+                    if (mobileGreetingText) mobileGreetingText.textContent = `Welcome, ${userName.split(' ')[0]}!`;
+                    if (mobileGreetingActions) {
+                        mobileGreetingActions.innerHTML = `<a href="account.php" class="mobile-user-btn">My Account</a> <span class="mobile-user-divider">&bull;</span> <a href="javascript:void(0)" onclick="headerLogout()" class="mobile-user-btn">Logout</a>`;
+                    }
+                    if (mobileAccountLink) {
+                        mobileAccountLink.href = 'account.php';
+                    }
+                } else {
+                    if (mobileGreetingText) mobileGreetingText.textContent = `Welcome!`;
+                    if (mobileGreetingActions) {
+                        mobileGreetingActions.innerHTML = `<a href="login.php?action=login" class="mobile-user-btn">Login</a> <span class="mobile-user-divider">&bull;</span> <a href="login.php?action=register" class="mobile-user-btn">Register</a>`;
+                    }
+                    if (mobileAccountLink) {
+                        mobileAccountLink.href = 'login.php?action=login';
+                    }
+                }
+            } catch(e) {}
+        }
+
+        // Global logout function
+        window.headerLogout = function() {
+            try {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userName');
+                if (typeof showToast === 'function') {
+                    showToast('Logged out successfully');
+                }
+                setTimeout(() => {
+                    window.location.href = 'index.php';
+                }, 800);
+            } catch(e) {
+                window.location.href = 'index.php';
+            }
+        };
+
+        syncHeaderCartCount();
+        syncHeaderUserState();
+
+        // Listen for storage changes to sync across tabs
+        window.addEventListener('storage', function() {
+            syncHeaderCartCount();
+            syncHeaderUserState();
+        });
+    });
+</script>

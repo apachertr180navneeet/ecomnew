@@ -25,7 +25,8 @@
                         <li><a href="careers.php">Careers</a></li>
                         <li><a href="store-locator.php">Store Locator</a></li>
                         <li><a href="sustainability.php">Sustainability</a></li>
-                        <li><a href="press.php">Press</a></li>
+                        <li><a href="account.php">My Account</a></li>
+                        <li><a href="account.php?tab=orders">Track Order</a></li>
                     </ul>
                 </div>
 
