@@ -21,49 +21,69 @@ include 'includes/header.php';
 <!-- ============================================
      CATEGORY HERO SECTION
      ============================================ -->
-<section class="category-hero">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Left Content Column -->
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="hero-badge mb-3"><i class="bi bi-stars"></i> <?php echo htmlspecialchars($category); ?> Essentials</div>
-                <h1 class="category-hero-title">DISCOVER THE<br>ART OF<br>DRESSING UP</h1>
-                <p class="category-hero-desc">
-                    Explore our curated collection of style masterpieces. Handcrafted fits designed to bring confidence, elegance, and comfort to your everyday look.
-                </p>
-                <div class="d-flex gap-3 flex-wrap">
-                    <a href="#latest-collection" class="btn btn-axvero btn-axvero-primary btn-lg px-5">
-                        <i class="bi bi-bag-check me-2"></i>Explore Collection
-                    </a>
-                </div>
+<section class="category-hero-fullscreen">
+    <!-- Background Image -->
+    <div class="category-hero-bg-wrapper">
+        <img src="assets/model.png" alt="Fashion Model Background" class="category-hero-bg-img" />
+        <div class="category-hero-bg-overlay"></div>
+    </div>
+    
+    <div class="container position-relative z-3">
+        <div class="row align-items-center min-vh-80 py-5">
+            <!-- Left Text Column -->
+            <div class="col-lg-7 text-white mb-5 mb-lg-0 text-start">
+                <span class="category-hero-subtitle">MADE IN INDIA, DEDICATED TO INDIA</span>
+                <h1 class="category-hero-main-title mt-2 mb-4">
+                    DISCOVER THE ART OF<br>DRESSING UP
+                </h1>
             </div>
-
-            <!-- Right Image Column with Float Cards -->
-            <div class="col-lg-6 text-center">
-                <div class="category-hero-img-wrapper">
-                    <!-- Float Card 1 (Knitted Polo) -->
-                    <div class="category-float-card category-float-card-1">
-                        <img src="https://images.unsplash.com/photo-1614975058789-41316d0e2e9c?w=120&h=120&fit=crop&q=80" alt="Cotton Cable Knit Polo" class="category-float-card-img" />
-                        <div class="category-float-card-info text-start">
-                            <h6>Cable Knit Polo</h6>
-                            <p>Rs 999.00</p>
+            
+            <!-- Right Alternating Product Cards Column -->
+            <div class="col-lg-5">
+                <div class="d-flex flex-column gap-4 align-items-center align-items-lg-end">
+                    <!-- Alternating Card 1: Image Left, Text Right -->
+                    <div class="category-product-row-card">
+                        <div class="row g-0 align-items-stretch w-100 h-100">
+                            <div class="col-5">
+                                <div class="category-product-card-img-box">
+                                    <img src="https://images.unsplash.com/photo-1614975058789-41316d0e2e9c?w=200&h=200&fit=crop&q=80" alt="Cotton Cable Knit Polo" />
+                                </div>
+                            </div>
+                            <div class="col-7">
+                                <div class="category-product-card-body text-start">
+                                    <h4 class="category-product-card-title">Product Name in Here</h4>
+                                    <p class="category-product-card-price">INR 300.000</p>
+                                    <a href="#" class="category-product-card-link">SHOP NOW</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Main Model Image -->
-                    <img src="assets/model.png" alt="Fashion Model" class="category-hero-img" />
-
-                    <!-- Float Card 2 (Cotton Tee) -->
-                    <div class="category-float-card category-float-card-2">
-                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=120&h=120&fit=crop&q=80" alt="Loose Fit Cotton Tee" class="category-float-card-img" />
-                        <div class="category-float-card-info text-start">
-                            <h6>Loose Cotton Tee</h6>
-                            <p>Rs 599.00</p>
+                    <!-- Alternating Card 2: Text Left, Image Right -->
+                    <div class="category-product-row-card">
+                        <div class="row g-0 align-items-stretch w-100 h-100">
+                            <div class="col-7">
+                                <div class="category-product-card-body text-start">
+                                    <h4 class="category-product-card-title">Product Name in Here</h4>
+                                    <p class="category-product-card-price">INR 300.000</p>
+                                    <a href="#" class="category-product-card-link">SHOP NOW</a>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="category-product-card-img-box">
+                                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=200&h=200&fit=crop&q=80" alt="Loose Fit Cotton Tee" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Chevron Down Icon at the very bottom -->
+    <div class="category-hero-scroll-down">
+        <i class="bi bi-chevron-down text-white fs-3"></i>
     </div>
 </section>
 

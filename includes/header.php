@@ -1,3 +1,6 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +49,7 @@
     <header class="main-header py-2 py-lg-3 border-bottom">
         <div class="container d-flex align-items-center justify-content-between gap-3">
             <!-- Logo -->
-            <a href="#" class="brand-logo-custom d-flex flex-column align-items-center flex-shrink-0">
+            <a href="index.php" class="brand-logo-custom d-flex flex-column align-items-center flex-shrink-0">
                 <div class="logo-ax">AX</div>
                 <div class="logo-text">AXVERO</div>
             </a>
@@ -115,7 +118,7 @@
     <div class="offcanvas offcanvas-start mobile-offcanvas" tabindex="-1" id="mobileMenuOffcanvas" aria-labelledby="mobileMenuOffcanvasLabel">
         <!-- Offcanvas Header -->
         <div class="offcanvas-header mobile-offcanvas-header">
-            <a href="#" class="brand-logo-custom d-flex flex-column align-items-center">
+            <a href="index.php" class="brand-logo-custom d-flex flex-column align-items-center">
                 <div class="logo-ax" style="font-size: 1.4rem;">AX</div>
                 <div class="logo-text">AXVERO</div>
             </a>
@@ -144,17 +147,17 @@
             <!-- Primary Navigation -->
             <nav class="mobile-nav-section">
                 <ul class="mobile-nav-list">
-                    <li class="mobile-nav-item active">
-                        <a href="#"><i class="bi bi-house-door"></i><span>Home</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                    <li class="mobile-nav-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">
+                        <a href="index.php"><i class="bi bi-house-door"></i><span>Home</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
-                    <li class="mobile-nav-item">
-                        <a href="#"><i class="bi bi-lightning"></i><span>Flash Sale</span><span class="mobile-nav-hot-badge">HOT</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                    <li class="mobile-nav-item <?php echo ($currentPage == 'flash-sale.php') ? 'active' : ''; ?>">
+                        <a href="flash-sale.php"><i class="bi bi-lightning"></i><span>Flash Sale</span><span class="mobile-nav-hot-badge">HOT</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
-                    <li class="mobile-nav-item">
-                        <a href="#"><i class="bi bi-shop"></i><span>All Brands</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                    <li class="mobile-nav-item <?php echo ($currentPage == 'brands.php') ? 'active' : ''; ?>">
+                        <a href="brands.php"><i class="bi bi-shop"></i><span>All Brands</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
-                    <li class="mobile-nav-item">
-                        <a href="#"><i class="bi bi-grid"></i><span>All Categories</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
+                    <li class="mobile-nav-item <?php echo ($currentPage == 'categories.php') ? 'active' : ''; ?>">
+                        <a href="categories.php"><i class="bi bi-grid"></i><span>All Categories</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
                     </li>
                     <li class="mobile-nav-item">
                         <a href="#"><i class="bi bi-people"></i><span>Team Login</span><i class="bi bi-chevron-right mobile-nav-arrow"></i></a>
@@ -169,13 +172,13 @@
             <div class="mobile-nav-section">
                 <h6 class="mobile-section-label">Shop by Category</h6>
                 <div class="mobile-category-chips">
-                    <a href="#" class="mobile-chip">Women</a>
-                    <a href="#" class="mobile-chip">Men</a>
-                    <a href="#" class="mobile-chip">Kids</a>
-                    <a href="#" class="mobile-chip">Footwear</a>
-                    <a href="#" class="mobile-chip">Home Decor</a>
-                    <a href="#" class="mobile-chip">Bags</a>
-                    <a href="#" class="mobile-chip">Accessories</a>
+                    <a href="category.php?category=Women" class="mobile-chip">Women</a>
+                    <a href="category.php?category=Mens" class="mobile-chip">Men</a>
+                    <a href="category.php?category=Kids" class="mobile-chip">Kids</a>
+                    <a href="category.php?category=Footwear" class="mobile-chip">Footwear</a>
+                    <a href="category.php?category=HomeDecor" class="mobile-chip">Home Decor</a>
+                    <a href="category.php?category=Bags" class="mobile-chip">Bags</a>
+                    <a href="category.php?category=Accessories" class="mobile-chip">Accessories</a>
                 </div>
             </div>
 
@@ -211,18 +214,29 @@
     <div class="nav-bar-custom py-3 border-bottom">
         <div class="container d-flex align-items-center justify-content-between">
             <!-- Left Categories -->
-            <div class="nav-categories d-flex align-items-center gap-2">
-                <span class="text-purple">Categories</span>
-                <span class="text-muted fs-6">(See All)</span>
-                <i class="bi bi-chevron-down text-purple ms-1"></i>
+            <div class="dropdown">
+                <div class="nav-categories d-flex align-items-center gap-2" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                    <span class="text-purple">Categories</span>
+                    <span class="text-muted fs-6">(See All)</span>
+                    <i class="bi bi-chevron-down text-purple ms-1"></i>
+                </div>
+                <ul class="dropdown-menu categories-dropdown-menu shadow-sm border-0 py-2 mt-2" aria-labelledby="categoriesDropdown">
+                    <li><a class="dropdown-item" href="category.php?category=Westernwear">Westernwear</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Indianwear">Indianwear</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Mens">Mens</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Kids">Kids</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Women">Women</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Footwear">Footwear</a></li>
+                    <li><a class="dropdown-item" href="category.php?category=Bags">Bags</a></li>
+                </ul>
             </div>
 
             <!-- Middle Navigation Links -->
             <ul class="nav-links-custom d-flex gap-4 mb-0 align-items-center d-none d-lg-flex">
-                <li><a href="#" class="nav-link-item active">Home</a></li>
-                <li><a href="#" class="nav-link-item">Flash Sale</a></li>
-                <li><a href="#" class="nav-link-item">All Brands</a></li>
-                <li><a href="#" class="nav-link-item">All categories</a></li>
+                <li><a href="index.php" class="nav-link-item <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">Home</a></li>
+                <li><a href="flash-sale.php" class="nav-link-item <?php echo ($currentPage == 'flash-sale.php') ? 'active' : ''; ?>">Flash Sale</a></li>
+                <li><a href="brands.php" class="nav-link-item <?php echo ($currentPage == 'brands.php') ? 'active' : ''; ?>">All Brands</a></li>
+                <li><a href="categories.php" class="nav-link-item <?php echo ($currentPage == 'categories.php') ? 'active' : ''; ?>">All categories</a></li>
                 <li><a href="#" class="nav-link-item">Team Login/ Company Person</a></li>
             </ul>
 

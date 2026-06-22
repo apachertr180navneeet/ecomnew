@@ -84,101 +84,115 @@ PREMIUM CATEGORIES SHOWCASE
         <div class="categories-flex-row">
             <!-- 1. WESTERNWEAR -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop&q=80"
-                        alt="Westernwear"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Westernwear</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Westernwear" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop&q=80"
+                            alt="Westernwear"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Westernwear</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 2. INDIANWEAR -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=800&fit=crop&q=80"
-                        alt="Indianwear"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Indianwear</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Indianwear" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=800&fit=crop&q=80"
+                            alt="Indianwear"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Indianwear</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 3. MENS -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=600&h=800&fit=crop&q=80"
-                        alt="Mens"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Mens</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Mens" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=600&h=800&fit=crop&q=80"
+                            alt="Mens"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Mens</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 4. KIDS -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600&h=800&fit=crop&q=80"
-                        alt="Kids"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Kids</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Kids" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600&h=800&fit=crop&q=80"
+                            alt="Kids"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Kids</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 5. WOMEN -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&q=80"
-                        alt="Women"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Women</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Women" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop&q=80"
+                            alt="Women"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Women</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 6. FOOTWEAR -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&h=800&fit=crop&q=80"
-                        alt="Footwear"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Footwear</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Footwear" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&h=800&fit=crop&q=80"
+                            alt="Footwear"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Footwear</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- 7. BAGS -->
             <div class="category-flex-item">
-                <div class="premium-cat-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&q=80"
-                        alt="Bags"
-                        loading="lazy"
-                    />
-                    <div class="premium-cat-overlay">
-                        <h3 class="premium-cat-title">Bags</h3>
-                        <button class="premium-cat-btn">Shop Now</button>
+                <a href="category.php?category=Bags" class="d-block text-decoration-none">
+                    <div class="premium-cat-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=800&fit=crop&q=80"
+                            alt="Bags"
+                            loading="lazy"
+                        />
+                        <div class="premium-cat-overlay">
+                            <h3 class="premium-cat-title">Bags</h3>
+                            <span class="premium-cat-btn d-inline-block">Shop Now</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

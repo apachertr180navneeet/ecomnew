@@ -6,7 +6,7 @@
             <div class="row g-5">
                 <!-- Brand -->
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="footer-brand">Axvero<span>.</span></a>
+                    <a href="index.php" class="footer-brand">Axvero<span>.</span></a>
                     <p class="footer-desc">Elevating your everyday style with premium fashion and home essentials. Discover the art of modern living.</p>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -33,11 +33,11 @@
                 <div class="col-lg-2 col-md-6 col-6">
                     <h5 class="footer-heading">Categories</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Kids</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Home & Decor</a></li>
+                        <li><a href="category.php?category=Women">Women</a></li>
+                        <li><a href="category.php?category=Mens">Men</a></li>
+                        <li><a href="category.php?category=Kids">Kids</a></li>
+                        <li><a href="category.php?category=Accessories">Accessories</a></li>
+                        <li><a href="category.php?category=HomeDecor">Home & Decor</a></li>
                     </ul>
                 </div>
 
